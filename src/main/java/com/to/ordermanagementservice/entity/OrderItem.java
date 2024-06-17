@@ -1,4 +1,4 @@
-//no dublicate userid in orderitem
+//no dublicate userid in orderitem (completed)
 
 package com.to.ordermanagementservice.entity;
 

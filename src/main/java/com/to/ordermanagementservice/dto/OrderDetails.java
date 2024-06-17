@@ -1,10 +1,21 @@
 package com.to.ordermanagementservice.dto;
 
-public class OrderDetails {//reterne all list of order and user
+import com.to.ordermanagementservice.entity.OrderItem;
+
+import java.time.OffsetDateTime;
+import java.util.List;
+
+public class OrderDetails {//reterne all list of order and user ()
 
     private Integer orderId;
 
-    private Integer customerId;
+    private Integer userId;
+
+    private OffsetDateTime createdAt;
+
+    private OffsetDateTime updatedAt;
+
+    private List<OrderItemDetails> orderItems;
 
     public Integer getOrderId() {
         return orderId;
@@ -14,13 +25,37 @@ public class OrderDetails {//reterne all list of order and user
         this.orderId = orderId;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public OffsetDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public List<OrderItemDetails> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItemDetails> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
 }
-// добавить дто сюда
+// добавить дто сюда (ask)
