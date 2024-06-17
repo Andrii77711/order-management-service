@@ -32,9 +32,9 @@ public class SimpleOrderService implements OrderService {
 
 
     private OrderDetails collectOrderDetails(Order order) {
-        OrderDetails orderDetails = new OrderDetails();
-        orderDetails.setOrderId(order.getId());
-        return orderDetails;
+        OrderDetails objest = new OrderDetails();
+        objest.setOrderId(order.getId());//add another table
+        return objest;
     }
 
 }

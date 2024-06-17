@@ -1,6 +1,6 @@
 package com.to.ordermanagementservice.dto;
 
-public class OrderDetails {
+public class OrderDetails {//reterne all list of order and user
 
     private Integer orderId;
 

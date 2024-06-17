@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1")//
 public class OrdersApiController {
 
     private final OrderService orderService;
@@ -21,7 +21,7 @@ public class OrdersApiController {
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<List<OrderDetails>> apiV1OrdersGet() {
+    public ResponseEntity<List<OrderDetails>> apiV1OrdersGet() {//make analogeis with orderItem, order
         var orders = orderService.getAllOrders();
         return CollectionUtils.isEmpty(orders)
                 ? ResponseEntity.notFound().build()
