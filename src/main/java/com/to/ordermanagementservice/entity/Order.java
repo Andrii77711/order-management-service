@@ -1,6 +1,6 @@
-//1. write into class (change custimer (on userid)) replace orderitem id here
-//2. setter metod and getter
-//3. add userid here
+//1.todo write into class (change custimer (on userid)) replace orderitem id here
+//2.todo setter metod and getter
+//3.todo add userid here
 
 
 package com.to.ordermanagementservice.entity;

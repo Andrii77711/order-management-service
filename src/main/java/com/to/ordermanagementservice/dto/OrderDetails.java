@@ -5,11 +5,11 @@ import com.to.ordermanagementservice.entity.OrderItem;
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public class OrderDetails {//reterne all list of order and user ()
+public class OrderDetails {//todo reterne all list of order and user ()
 
     private Integer orderId;
 
-    private Integer userId;
+    private Integer userId;// todo put castomer id not user
 
     private OffsetDateTime createdAt;
 
@@ -56,6 +56,5 @@ public class OrderDetails {//reterne all list of order and user ()
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
+// todo are sent two repositorie (entity) transform and link entities to dto and on transfer layer
 }
-// добавить дто сюда (ask)

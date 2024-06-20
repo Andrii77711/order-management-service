@@ -21,12 +21,12 @@ public class OrdersApiController {
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<List<OrderDetails>> apiV1OrdersGet() {//make analogeis with orderItem, order(ask)
+    public ResponseEntity<List<OrderDetails>> apiV1OrdersGet() {
         var orders = orderService.getAllOrders();
         return CollectionUtils.isEmpty(orders)
                 ? ResponseEntity.notFound().build()
                 : ResponseEntity.ok(orders);
 
     }
-//
+
 }

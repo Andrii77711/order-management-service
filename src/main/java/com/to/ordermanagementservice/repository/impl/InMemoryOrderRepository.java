@@ -31,7 +31,7 @@ public class InMemoryOrderRepository implements OrderRepository {
     private Order createOrder(int id, int userId) {
         Order order = new Order();
         order.setId(id);
-        order.setUserId(userId); // Добавить id клиента чтобы добовлялся id человека (completed)
+        order.setUserId(userId); //todo Добавить id клиента чтобы добовлялся id человека (completed)
         order.setCreatedAt(OffsetDateTime.now());
         order.setUpdatedAt(OffsetDateTime.now());
         order.setOrderItems(orderItemRepository.getOrderItemsByOrderId(id));
