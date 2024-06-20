@@ -1,7 +1,9 @@
 package com.to.ordermanagementservice.service.impl;
 
 import com.to.ordermanagementservice.dto.OrderDetails;
+import com.to.ordermanagementservice.dto.OrderItemDetails;
 import com.to.ordermanagementservice.entity.Order;
+import com.to.ordermanagementservice.entity.OrderItem;
 import com.to.ordermanagementservice.repository.OrderRepository;
 import com.to.ordermanagementservice.service.OrderService;
 import org.springframework.stereotype.Service;
@@ -33,8 +35,26 @@ public class SimpleOrderService implements OrderService {
 
     private OrderDetails collectOrderDetails(Order order) {
         OrderDetails orderDetails = new OrderDetails();
-        orderDetails.setOrderId(order.getId());
+        orderDetails.setOrderId(order.getId());//todo add another table(ask)
+        orderDetails.setOrderItems(collectOrderItemDetails(order.getOrderItems()));
+        orderDetails.setUserId(order.getUserId());
+        orderDetails.setUpdatedAt(order.getUpdatedAt());
+        orderDetails.setCreatedAt(order.getCreatedAt());
         return orderDetails;
+    }
+    private List<OrderItemDetails> collectOrderItemDetails (List<OrderItem> orderItems){
+        List<OrderItemDetails> result = new ArrayList<>();
+        for (OrderItem  orderItem: orderItems){
+            OrderItemDetails orderItemDetails = new OrderItemDetails();
+            orderItemDetails.setOrderItemId(orderItem.getOrderId());
+            orderItemDetails.setUpdateAt(orderItem.getUpdatedAt());
+            orderItemDetails.setCreatedAt(orderItem.getCreatedAt());
+            orderItemDetails.setPrice(orderItem.getPrice());
+            orderItemDetails.setQuantity(orderItem.getQuantity());
+            orderItemDetails.setProductId(orderItem.getProductId());
+            result.add(orderItemDetails);
+        }
+        return result;
     }
 
 }
