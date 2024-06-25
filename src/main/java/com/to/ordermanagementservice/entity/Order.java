@@ -6,7 +6,6 @@
 package com.to.ordermanagementservice.entity;
 
 import java.time.OffsetDateTime;
-import java.util.List;
 
 public class Order {
 
@@ -15,8 +14,6 @@ public class Order {
     private OffsetDateTime createdAt;
 
     private OffsetDateTime updatedAt;
-
-    private List<OrderItem> orderItems;
 
     private Integer userId;
 
@@ -42,14 +39,6 @@ public class Order {
 
     public void setCreatedAt(OffsetDateTime createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
     }
 
     public OffsetDateTime getUpdatedAt() {

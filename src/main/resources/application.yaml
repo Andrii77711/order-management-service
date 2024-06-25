@@ -3,4 +3,4 @@ spring:
     name: order-management-service
 
 server:
-  port: 18081
+  port: 18080

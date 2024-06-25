@@ -1,15 +1,13 @@
 package com.to.ordermanagementservice.dto;
 
-import com.to.ordermanagementservice.entity.OrderItem;
-
 import java.time.OffsetDateTime;
 import java.util.List;
 
-public class OrderDetails {//todo reterne all list of order and user ()
+public class OrderDetails {
 
     private Integer orderId;
 
-    private Integer userId;// todo put castomer id not user
+    private Integer customerId;
 
     private OffsetDateTime createdAt;
 
@@ -49,12 +47,12 @@ public class OrderDetails {//todo reterne all list of order and user ()
         this.orderItems = orderItems;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getCustomerId() {
+        return customerId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
     }
-// todo are sent two repositorie (entity) transform and link entities to dto and on transfer layer
+
 }
