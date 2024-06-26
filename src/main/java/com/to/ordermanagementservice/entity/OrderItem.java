@@ -1,5 +1,3 @@
-//no dublicate userid in orderitem (completed)
-
 package com.to.ordermanagementservice.entity;
 
 import java.math.BigDecimal;
@@ -15,7 +13,6 @@ public class OrderItem {
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
 
-    // Getters и Setters
     public Integer getId() {
         return id;
     }

@@ -50,7 +50,7 @@ public class SimpleOrderService implements OrderService {
         List<OrderItemDetails> result = new ArrayList<>();
         for (OrderItem  orderItem: orderItems){
             OrderItemDetails orderItemDetails = new OrderItemDetails();
-            orderItemDetails.setOrderItemId(orderItem.getOrderId());
+            orderItemDetails.setOrderId(orderItem.getOrderId());
             orderItemDetails.setId(orderItem.getId());
             orderItemDetails.setUpdateAt(orderItem.getUpdatedAt());
             orderItemDetails.setCreatedAt(orderItem.getCreatedAt());

@@ -1,7 +1,6 @@
 package com.to.ordermanagementservice.repository.impl;
 
 import com.to.ordermanagementservice.entity.OrderItem;
-import com.to.ordermanagementservice.exception.UnimplementedException;
 import com.to.ordermanagementservice.repository.OrderItemRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,8 +1,3 @@
-//1.todo write into class (change custimer (on userid)) replace orderitem id here
-//2.todo setter metod and getter
-//3.todo add userid here
-
-
 package com.to.ordermanagementservice.entity;
 
 import java.time.OffsetDateTime;
