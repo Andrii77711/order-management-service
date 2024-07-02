@@ -6,11 +6,14 @@ import com.to.ordermanagementservice.entity.Order;
 import com.to.ordermanagementservice.entity.OrderItem;
 import com.to.ordermanagementservice.repository.OrderItemRepository;
 import com.to.ordermanagementservice.repository.OrderRepository;
+import com.to.ordermanagementservice.repository.impl.InMemoryOrderRepository;
 import com.to.ordermanagementservice.service.OrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class SimpleOrderService implements OrderService {
@@ -46,19 +49,21 @@ public class SimpleOrderService implements OrderService {
         return orderDetails;
     }
     private List<OrderItemDetails> collectOrderItemDetails (Integer orderId){
-        List<OrderItem> orderItems = orderItemRepository.getOrderItemsByOrderId(orderId);
-        List<OrderItemDetails> result = new ArrayList<>();
-        for (OrderItem  orderItem: orderItems){
-            OrderItemDetails orderItemDetails = new OrderItemDetails();
-            orderItemDetails.setId(orderItem.getId());
-            orderItemDetails.setUpdateAt(orderItem.getUpdatedAt());
-            orderItemDetails.setCreatedAt(orderItem.getCreatedAt());
-            orderItemDetails.setPrice(orderItem.getPrice());
-            orderItemDetails.setQuantity(orderItem.getQuantity());
-            orderItemDetails.setProductId(orderItem.getProductId());
-            result.add(orderItemDetails);
-        }
-        return result;
+        return orderItemRepository.getOrderItemsByOrderId(orderId).stream()
+                .map(orderItem -> convertOrderItemToOrderItemDetails(orderItem)).toList();
     }
+
+    private OrderItemDetails convertOrderItemToOrderItemDetails(OrderItem orderItem) {
+        OrderItemDetails orderItemDetails = new OrderItemDetails();
+        orderItemDetails.setId(orderItem.getId());
+        orderItemDetails.setUpdateAt(orderItem.getUpdatedAt());
+        orderItemDetails.setCreatedAt(orderItem.getCreatedAt());
+        orderItemDetails.setPrice(orderItem.getPrice());
+        orderItemDetails.setQuantity(orderItem.getQuantity());
+        orderItemDetails.setProductId(orderItem.getProductId());
+        return orderItemDetails;
+    }
+
+
 
 }
