@@ -5,7 +5,7 @@ import java.util.List;
 
 public class OrderDetails {
 
-    private Integer orderId;
+    private Integer id;
 
     private Integer customerId;
 
@@ -15,12 +15,12 @@ public class OrderDetails {
 
     private List<OrderItemDetails> orderItems;
 
-    public Integer getOrderId() {
-        return orderId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public OffsetDateTime getCreatedAt() {
