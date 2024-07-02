@@ -48,7 +48,7 @@ public class SimpleOrderService implements OrderService {
     private List<OrderItemDetails> collectOrderItemDetails (Integer orderId){
         List<OrderItem> orderItems = orderItemRepository.getOrderItemsByOrderId(orderId);
         List<OrderItemDetails> result = new ArrayList<>();
-        for (OrderItem  orderItem: orderItems){//todo stream replace for idg (ENHANCED !!!)
+        for (OrderItem  orderItem: orderItems){
             OrderItemDetails orderItemDetails = new OrderItemDetails();
             orderItemDetails.setId(orderItem.getId());
             orderItemDetails.setUpdateAt(orderItem.getUpdatedAt());
@@ -60,6 +60,5 @@ public class SimpleOrderService implements OrderService {
         }
         return result;
     }
-//todo creat a total amount for all product (quantity * price)
-    //todo merge projact
+
 }

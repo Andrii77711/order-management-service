@@ -47,7 +47,7 @@ public class InMemoryOrderItemRepository implements OrderItemRepository {
     }
 
     @Override
-    public List<OrderItem> getOrderItemsByOrderId(Integer orderId) {//todo found information about list<OrderItem> and cplect .imlemation
+    public List<OrderItem> getOrderItemsByOrderId(Integer orderId) {
         return orderItems.stream()
                 .filter(orderItem -> orderItem.getId().equals(orderId))
                 .collect(Collectors.toList());
