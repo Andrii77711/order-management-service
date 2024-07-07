@@ -1,5 +1,6 @@
 package com.to.ordermanagementservice.dto;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class OrderDetails {
     private OffsetDateTime updatedAt;
 
     private List<OrderItemDetails> orderItems;
+
+    private BigDecimal totalPrice;
 
     public Integer getId() {
         return id;
@@ -55,4 +58,11 @@ public class OrderDetails {
         this.customerId = customerId;
     }
 
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(BigDecimal totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }

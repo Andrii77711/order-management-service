@@ -10,6 +10,7 @@ import com.to.ordermanagementservice.repository.impl.InMemoryOrderRepository;
 import com.to.ordermanagementservice.service.OrderService;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -46,8 +47,20 @@ public class SimpleOrderService implements OrderService {
         orderDetails.setCustomerId(order.getUserId());
         orderDetails.setUpdatedAt(order.getUpdatedAt());
         orderDetails.setCreatedAt(order.getCreatedAt());
+        orderDetails.setTotalPrice(getTotalPriceForOrder(orderDetails.getOrderItems()));
         return orderDetails;
     }
+
+    private BigDecimal getTotalPriceForOrder(List<OrderItemDetails> orderItems){
+        BigDecimal result = new BigDecimal(0);
+        for (OrderItemDetails orderItem:orderItems){
+            BigDecimal totalPrice = new BigDecimal(orderItem.getQuantity());
+            totalPrice = totalPrice.multiply(orderItem.getPrice());
+            result = result.add(totalPrice);
+        }
+        return result;
+    }
+
     private List<OrderItemDetails> collectOrderItemDetails (Integer orderId){
         return orderItemRepository.getOrderItemsByOrderId(orderId).stream()
                 .map(orderItem -> convertOrderItemToOrderItemDetails(orderItem)).toList();
