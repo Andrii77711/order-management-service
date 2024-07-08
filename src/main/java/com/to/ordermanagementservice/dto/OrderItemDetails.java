@@ -1,23 +1,30 @@
 package com.to.ordermanagementservice.dto;
 
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 
 public class OrderItemDetails {
 
-    private Integer orderItemId;
+    private Integer orderId;
 
     private Integer productId;
 
+    private Integer id;
+
     private Integer quantity;
+
+    private OffsetDateTime updateAt;
+
+    private OffsetDateTime createdAt;
 
     private BigDecimal price;
 
-    public Integer getOrderItemId() {
-        return orderItemId;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public void setOrderItemId(Integer orderItemId) {
-        this.orderItemId = orderItemId;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public Integer getProductId() {
@@ -26,6 +33,14 @@ public class OrderItemDetails {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getQuantity() {
@@ -44,5 +59,20 @@ public class OrderItemDetails {
         this.price = price;
     }
 
+    public OffsetDateTime getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(OffsetDateTime updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
 

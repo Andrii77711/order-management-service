@@ -10,6 +10,16 @@ public class Order {
 
     private OffsetDateTime updatedAt;
 
+    private Integer userId;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -33,4 +43,6 @@ public class Order {
     public void setUpdatedAt(OffsetDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+
 }

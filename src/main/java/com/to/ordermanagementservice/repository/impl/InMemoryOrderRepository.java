@@ -11,12 +11,11 @@ import java.util.List;
 public class InMemoryOrderRepository implements OrderRepository {
 
     private final List<Order> orders;
-
     public InMemoryOrderRepository() {
         orders = List.of(
-                createOrder(1),
-                createOrder(2),
-                createOrder(3)
+                createOrder(1, 1),
+                createOrder(2, 2),
+                createOrder(3, 3)
         );
     }
 
@@ -25,12 +24,12 @@ public class InMemoryOrderRepository implements OrderRepository {
         return List.copyOf(orders);
     }
 
-    private static Order createOrder(int id) {
+    private Order createOrder(int id, int userId) {
         Order order = new Order();
         order.setId(id);
+        order.setUserId(userId);
         order.setCreatedAt(OffsetDateTime.now());
+        order.setUpdatedAt(OffsetDateTime.now());
         return order;
     }
-    // чтобы добовлялся id человека !!!
-
 }

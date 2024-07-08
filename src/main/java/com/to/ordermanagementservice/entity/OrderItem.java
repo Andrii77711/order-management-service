@@ -6,18 +6,11 @@ import java.time.OffsetDateTime;
 public class OrderItem {
 
     private Integer id;
-
     private Integer orderId;
-
-    private Integer userId;//1!!! перенести (не продукт под юзера а наоборот )
-
     private Integer productId;
-
-    private Integer quantity;//кол.
+    private Integer quantity;
     private BigDecimal price;
-
     private OffsetDateTime createdAt;
-
     private OffsetDateTime updatedAt;
 
     public Integer getId() {
@@ -34,14 +27,6 @@ public class OrderItem {
 
     public void setOrderId(Integer orderId) {
         this.orderId = orderId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public Integer getProductId() {
