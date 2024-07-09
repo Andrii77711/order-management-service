@@ -5,6 +5,8 @@ import java.time.OffsetDateTime;
 
 public class OrderItemDetails {
 
+    private Integer orderId;
+
     private Integer productId;
 
     private Integer id;
@@ -16,6 +18,14 @@ public class OrderItemDetails {
     private OffsetDateTime createdAt;
 
     private BigDecimal price;
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
 
     public Integer getProductId() {
         return productId;
