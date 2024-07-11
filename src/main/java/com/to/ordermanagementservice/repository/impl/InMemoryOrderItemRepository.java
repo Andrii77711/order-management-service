@@ -16,7 +16,7 @@ public class InMemoryOrderItemRepository implements OrderItemRepository {
 
     public InMemoryOrderItemRepository() {
         OrderItem orderItem11 = new OrderItem();
-        orderItem11.setId(11);
+        orderItem11.setId(1);
         orderItem11.setOrderId(1);
         orderItem11.setProductId(1);
         orderItem11.setQuantity(10);
@@ -25,7 +25,7 @@ public class InMemoryOrderItemRepository implements OrderItemRepository {
         orderItem11.setPrice(new BigDecimal("12.50"));
 
         OrderItem orderItem21 = new OrderItem();
-        orderItem21.setId(21);
+        orderItem21.setId(2);
         orderItem21.setOrderId(2);
         orderItem21.setProductId(21);
         orderItem21.setQuantity(110);
@@ -34,7 +34,7 @@ public class InMemoryOrderItemRepository implements OrderItemRepository {
         orderItem21.setPrice(new BigDecimal("42.50"));
 
         OrderItem orderItem22 = new OrderItem();
-        orderItem22.setId(22);
+        orderItem22.setId(2);
         orderItem22.setOrderId(2);
         orderItem22.setProductId(121);
         orderItem22.setQuantity(4);
