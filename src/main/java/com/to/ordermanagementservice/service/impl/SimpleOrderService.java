@@ -6,13 +6,11 @@ import com.to.ordermanagementservice.entity.Order;
 import com.to.ordermanagementservice.entity.OrderItem;
 import com.to.ordermanagementservice.repository.OrderItemRepository;
 import com.to.ordermanagementservice.repository.OrderRepository;
-import com.to.ordermanagementservice.repository.impl.InMemoryOrderRepository;
 import com.to.ordermanagementservice.service.OrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -64,7 +62,4 @@ public class SimpleOrderService implements OrderService {
         orderItemDetails.setProductId(orderItem.getProductId());
         return orderItemDetails;
     }
-
-
-
 }
