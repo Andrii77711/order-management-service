@@ -57,7 +57,7 @@ public class SimpleOrderService implements OrderService {
         OrderItemDetails orderItemDetails = new OrderItemDetails();
         orderItemDetails.setId(orderItem.getId());
         orderItemDetails.setOrderId(orderItem.getOrderId());
-        orderItemDetails.setUpdateAt(orderItem.getUpdatedAt());
+        orderItemDetails.setUpdatedAt(orderItem.getUpdatedAt());
         orderItemDetails.setCreatedAt(orderItem.getCreatedAt());
         orderItemDetails.setPrice(orderItem.getPrice());
         orderItemDetails.setQuantity(orderItem.getQuantity());

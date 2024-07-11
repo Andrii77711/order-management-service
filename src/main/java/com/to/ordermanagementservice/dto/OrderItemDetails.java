@@ -13,7 +13,7 @@ public class OrderItemDetails {
 
     private Integer quantity;
 
-    private OffsetDateTime updateAt;
+    private OffsetDateTime updatedAt;
 
     private OffsetDateTime createdAt;
 
@@ -59,12 +59,12 @@ public class OrderItemDetails {
         this.price = price;
     }
 
-    public OffsetDateTime getUpdateAt() {
-        return updateAt;
+    public OffsetDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdateAt(OffsetDateTime updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public OffsetDateTime getCreatedAt() {

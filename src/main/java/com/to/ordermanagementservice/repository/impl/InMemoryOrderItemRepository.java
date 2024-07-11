@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Repository
+@Repository("in-memory")
 public class InMemoryOrderItemRepository implements OrderItemRepository {
 
     private final List<OrderItem> orderItems;
