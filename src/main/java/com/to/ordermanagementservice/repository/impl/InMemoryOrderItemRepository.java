@@ -49,7 +49,7 @@ public class InMemoryOrderItemRepository implements OrderItemRepository {
     @Override
     public List<OrderItem> getOrderItemsByOrderId(Integer orderId) {
         return orderItems.stream()
-                .filter(orderItem -> orderItem.getId().equals(orderId))
+                .filter(orderItem -> orderItem.getOrderId().equals(orderId))
                 .collect(Collectors.toList());
     }
 }
