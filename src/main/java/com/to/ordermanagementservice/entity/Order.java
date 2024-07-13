@@ -44,13 +44,4 @@ public class Order {
         this.updatedAt = updatedAt;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", userId=" + userId +
-                '}';
-    }
 }
