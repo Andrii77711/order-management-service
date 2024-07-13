@@ -63,21 +63,19 @@ public class SimpleOrderService implements OrderService {
 
     private List<OrderItemDetails> collectOrderItemDetails (Integer orderId){
         return orderItemRepository.getOrderItemsByOrderId(orderId).stream()
-                .map(orderItem -> convertOrderItemToOrderItemDetails(orderItem)).toList();
+                .map(orderItem -> convertOrderItemToOrderItemDetails(orderItem))
+                .toList();
     }
 
     private OrderItemDetails convertOrderItemToOrderItemDetails(OrderItem orderItem) {
         OrderItemDetails orderItemDetails = new OrderItemDetails();
         orderItemDetails.setId(orderItem.getId());
         orderItemDetails.setOrderId(orderItem.getOrderId());
-        orderItemDetails.setUpdateAt(orderItem.getUpdatedAt());
+        orderItemDetails.setUpdatedAt(orderItem.getUpdatedAt());
         orderItemDetails.setCreatedAt(orderItem.getCreatedAt());
         orderItemDetails.setPrice(orderItem.getPrice());
         orderItemDetails.setQuantity(orderItem.getQuantity());
         orderItemDetails.setProductId(orderItem.getProductId());
         return orderItemDetails;
     }
-
-
-
 }
