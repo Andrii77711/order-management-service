@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class SimpleOrderService implements OrderService {
@@ -48,7 +47,8 @@ public class SimpleOrderService implements OrderService {
     }
     private List<OrderItemDetails> collectOrderItemDetails (Integer orderId){
         return orderItemRepository.getOrderItemsByOrderId(orderId).stream()
-                .map(orderItem -> convertOrderItemToOrderItemDetails(orderItem)).toList();
+                .map(orderItem -> convertOrderItemToOrderItemDetails(orderItem))
+                .toList();
     }
 
     private OrderItemDetails convertOrderItemToOrderItemDetails(OrderItem orderItem) {
