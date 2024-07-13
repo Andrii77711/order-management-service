@@ -27,7 +27,7 @@ public class InMemoryOrderItemRepository implements OrderItemRepository {
         OrderItem orderItem21 = new OrderItem();
         orderItem21.setId(21);
         orderItem21.setOrderId(2);
-        orderItem21.setProductId(21);
+        orderItem21.setProductId(2);
         orderItem21.setQuantity(110);
         orderItem21.setCreatedAt(OffsetDateTime.now());
         orderItem21.setUpdatedAt(OffsetDateTime.now());
@@ -36,7 +36,7 @@ public class InMemoryOrderItemRepository implements OrderItemRepository {
         OrderItem orderItem22 = new OrderItem();
         orderItem22.setId(22);
         orderItem22.setOrderId(2);
-        orderItem22.setProductId(121);
+        orderItem22.setProductId(2);
         orderItem22.setQuantity(4);
         orderItem22.setCreatedAt(OffsetDateTime.now());
         orderItem22.setUpdatedAt(OffsetDateTime.now());
