@@ -48,9 +48,9 @@ public class SimpleOrderService implements OrderService {
         return orderDetails;
     }
 
-    private BigDecimal getTotalPriceForOrder(List<OrderItemDetails> orderItems){
+    private BigDecimal getTotalPriceForOrder(List<OrderItemDetails> orderItems) {
         BigDecimal result = new BigDecimal(0);
-        for (OrderItemDetails orderItem:orderItems){
+        for (OrderItemDetails orderItem : orderItems) {
             BigDecimal totalPrice = new BigDecimal(orderItem.getQuantity());
             totalPrice = totalPrice.multiply(orderItem.getPrice());
             result = result.add(totalPrice);
@@ -58,7 +58,7 @@ public class SimpleOrderService implements OrderService {
         return result;
     }
 
-    private List<OrderItemDetails> collectOrderItemDetails (Integer orderId){
+    private List<OrderItemDetails> collectOrderItemDetails(Integer orderId) {
         return orderItemRepository.getOrderItemsByOrderId(orderId).stream()
                 .map(orderItem -> convertOrderItemToOrderItemDetails(orderItem))
                 .toList();
