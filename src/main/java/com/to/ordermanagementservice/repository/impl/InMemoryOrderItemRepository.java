@@ -9,7 +9,7 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Repository("in-memory")
+@Repository
 public class InMemoryOrderItemRepository implements OrderItemRepository {
 
     private final List<OrderItem> orderItems;
@@ -18,7 +18,7 @@ public class InMemoryOrderItemRepository implements OrderItemRepository {
         OrderItem orderItem11 = new OrderItem();
         orderItem11.setId(1);
         orderItem11.setOrderId(1);
-        orderItem11.setProductId(1);
+        orderItem11.setProductId(11);
         orderItem11.setQuantity(10);
         orderItem11.setCreatedAt(OffsetDateTime.now());
         orderItem11.setUpdatedAt(OffsetDateTime.now());
@@ -36,7 +36,7 @@ public class InMemoryOrderItemRepository implements OrderItemRepository {
         OrderItem orderItem22 = new OrderItem();
         orderItem22.setId(2);
         orderItem22.setOrderId(2);
-        orderItem22.setProductId(121);
+        orderItem22.setProductId(22);
         orderItem22.setQuantity(4);
         orderItem22.setCreatedAt(OffsetDateTime.now());
         orderItem22.setUpdatedAt(OffsetDateTime.now());
