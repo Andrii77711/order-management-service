@@ -49,10 +49,9 @@ public class SimpleOrderService implements OrderService {
     }
 
     private BigDecimal getTotalPriceForOrder(List<OrderItemDetails> orderItems) {
-        BigDecimal result = new BigDecimal(0);
+        BigDecimal result = BigDecimal.ZERO;
         for (OrderItemDetails orderItem : orderItems) {
-            BigDecimal totalPrice = new BigDecimal(orderItem.getQuantity());
-            totalPrice = totalPrice.multiply(orderItem.getPrice());
+            BigDecimal totalPrice = orderItem.getPrice().multiply(BigDecimal.valueOf(orderItem.getQuantity()));
             result = result.add(totalPrice);
         }
         return result;
