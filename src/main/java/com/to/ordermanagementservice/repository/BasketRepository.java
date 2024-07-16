@@ -5,6 +5,7 @@ import com.to.ordermanagementservice.entity.Product;
 import java.util.List;
 
 public interface BasketRepository {
-    public void addProduct(Product product);
-    public List<String> getDescriptionsForAllProducts();
+    void addProduct(Product product);
+
+    List<String> getDescriptionsForAllProducts();
 }

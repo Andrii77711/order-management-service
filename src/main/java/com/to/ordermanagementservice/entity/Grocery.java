@@ -1,21 +1,21 @@
 package com.to.ordermanagementservice.entity;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
 
 public class Grocery extends Product{
-    private OffsetDateTime expiryDate;
+    private LocalDate expiryDate;
 
-    public Grocery(int id, String name, BigDecimal price, OffsetDateTime expiryDate) {
+    public Grocery(int id, String name, BigDecimal price, LocalDate expiryDate) {
         super(id, name, price);
         this.expiryDate = expiryDate;
     }
 
-    public OffsetDateTime getExpiryDate() {
+    public LocalDate getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(OffsetDateTime expiryDate) {
+    public void setExpiryDate(LocalDate expiryDate) {
         this.expiryDate = expiryDate;
     }
 

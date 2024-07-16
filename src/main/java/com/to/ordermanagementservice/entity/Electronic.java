@@ -1,13 +1,14 @@
 package com.to.ordermanagementservice.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 public class Electronic extends Product {
     private String brand;
-    private OffsetDateTime warrantyPeriod;
+    private LocalDate warrantyPeriod;
 
-    public Electronic(int id, String name, BigDecimal price, String brand, OffsetDateTime warrantyPeriod) {
+    public Electronic(int id, String name, BigDecimal price, String brand, LocalDate warrantyPeriod) {
         super(id, name, price);
         this.brand = brand;
         this.warrantyPeriod = warrantyPeriod;
@@ -21,11 +22,11 @@ public class Electronic extends Product {
         this.brand = brand;
     }
 
-    public OffsetDateTime getWarrantyPeriod() {
+    public LocalDate getWarrantyPeriod() {
         return warrantyPeriod;
     }
 
-    public void setWarrantyPeriod(OffsetDateTime warrantyPeriod) {
+    public void setWarrantyPeriod(LocalDate warrantyPeriod) {
         this.warrantyPeriod = warrantyPeriod;
     }
 

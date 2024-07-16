@@ -2,7 +2,7 @@ package com.to.ordermanagementservice.entity;
 
 import java.math.BigDecimal;
 
-public class Clothing extends Product{
+public class Clothing extends Product {
     private int size;
     private String color;
 

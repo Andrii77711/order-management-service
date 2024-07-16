@@ -14,18 +14,15 @@ public class BasketRepositoryImpl implements BasketRepository {
     }
 
     @Override
-    public void addProduct(Product product){
-         basket.add(product);
+    public void addProduct(Product product) {
+        if (product != null) {
+            basket.add(product);
+        }
     }
 
     @Override
-    public List<String> getDescriptionsForAllProducts(){
-        List<String> result = new ArrayList<>();
-        for (Product product : basket){
-            result.add(product.description());
-        }
-
-        return result;
+    public List<String> getDescriptionsForAllProducts() {
+        return basket.stream().map(Product::description).toList();
     }
 
 }
