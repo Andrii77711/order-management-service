@@ -2,7 +2,6 @@ package com.to.ordermanagementservice.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.OffsetDateTime;
 
 public class Electronic extends Product {
     private String brand;
