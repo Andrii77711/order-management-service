@@ -9,7 +9,6 @@ public class OrderItem {
     private Integer orderId;
     private Integer productId;
     private Integer quantity;
-    private BigDecimal price;
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
 
@@ -43,14 +42,6 @@ public class OrderItem {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
     }
 
     public OffsetDateTime getCreatedAt() {
