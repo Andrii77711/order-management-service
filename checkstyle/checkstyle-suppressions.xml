@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+        "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN"
+        "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+
+<suppressions>
+    <!-- Suppress HideUtilityClassConstructor warning for OrderManagementServiceApplication -->
+    <suppress checks="HideUtilityClassConstructor" files="OrderManagementServiceApplication.java"/>
+    <!-- Suppress MagicNumber warning for InMemoryOrderItemRepository and InMemoryOrderRepository -->
+    <suppress checks="MagicNumber" files="InMemoryOrderItemRepository.java"/>
+    <suppress checks="MagicNumber" files="InMemoryOrderRepository.java"/>
+</suppressions>
