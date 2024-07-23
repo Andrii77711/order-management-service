@@ -4,7 +4,6 @@ import com.to.ordermanagementservice.entity.OrderItem;
 import com.to.ordermanagementservice.repository.OrderItemRepository;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.stream.Collectors;

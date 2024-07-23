@@ -1,6 +1,5 @@
 package com.to.ordermanagementservice.entity;
 
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 public class OrderItem {

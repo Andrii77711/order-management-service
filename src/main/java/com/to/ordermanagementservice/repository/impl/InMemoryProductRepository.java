@@ -16,7 +16,7 @@ public class InMemoryProductRepository implements ProductRepository {
     private List<Product> products;
 
     public InMemoryProductRepository() {
-        products=new ArrayList<>();
+        products = new ArrayList<>();
         Product electronic1 = new Electronic(1,
                 "TV",
                 new BigDecimal(50000),

@@ -6,7 +6,10 @@
 <suppressions>
     <!-- Suppress HideUtilityClassConstructor warning for OrderManagementServiceApplication -->
     <suppress checks="HideUtilityClassConstructor" files="OrderManagementServiceApplication.java"/>
+    <suppress checks="HideUtilityClassConstructor" files="BasketTest.java"/>
     <!-- Suppress MagicNumber warning for InMemoryOrderItemRepository and InMemoryOrderRepository -->
     <suppress checks="MagicNumber" files="InMemoryOrderItemRepository.java"/>
     <suppress checks="MagicNumber" files="InMemoryOrderRepository.java"/>
+    <suppress checks="MagicNumber" files="BasketTest.java"/>
+    <suppress checks="MagicNumber" files="InMemoryProductRepository.java"/>
 </suppressions>

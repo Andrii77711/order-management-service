@@ -52,7 +52,7 @@ public class Book extends Product {
 
     @Override
     public String description() {
-        return "This " + getName() + " created by " + getAuthor() + " in " + getYear() +
-                ". This book has genre " + getGenre() + " and pages " + getPages();
+        return "This " + getName() + " created by " + getAuthor() + " in " + getYear()
+                + ". This book has genre " + getGenre() + " and pages " + getPages();
     }
 }
