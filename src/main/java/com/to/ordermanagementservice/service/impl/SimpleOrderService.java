@@ -2,10 +2,13 @@ package com.to.ordermanagementservice.service.impl;
 
 import com.to.ordermanagementservice.dto.OrderDetails;
 import com.to.ordermanagementservice.dto.OrderItemDetails;
+import com.to.ordermanagementservice.dto.ProductDetails;
 import com.to.ordermanagementservice.entity.Order;
 import com.to.ordermanagementservice.entity.OrderItem;
+import com.to.ordermanagementservice.entity.Product;
 import com.to.ordermanagementservice.repository.OrderItemRepository;
 import com.to.ordermanagementservice.repository.OrderRepository;
+import com.to.ordermanagementservice.repository.ProductRepository;
 import com.to.ordermanagementservice.service.OrderService;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +21,14 @@ public class SimpleOrderService implements OrderService {
 
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
+    private final ProductRepository productRepository;
 
-    public SimpleOrderService(OrderRepository orderRepository, OrderItemRepository orderItemRepository) {
+    public SimpleOrderService(OrderRepository orderRepository,
+                              OrderItemRepository orderItemRepository,
+                              ProductRepository productRepository) {
         this.orderRepository = orderRepository;
         this.orderItemRepository = orderItemRepository;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -51,7 +58,8 @@ public class SimpleOrderService implements OrderService {
     private BigDecimal getTotalPriceForOrder(List<OrderItemDetails> orderItems) {
         BigDecimal result = BigDecimal.ZERO;
         for (OrderItemDetails orderItem : orderItems) {
-            BigDecimal totalPrice = orderItem.getPrice().multiply(BigDecimal.valueOf(orderItem.getQuantity()));
+            BigDecimal totalPrice = orderItem.getProduct().getPrice()
+                    .multiply(BigDecimal.valueOf(orderItem.getQuantity()));
             result = result.add(totalPrice);
         }
         return result;
@@ -69,9 +77,21 @@ public class SimpleOrderService implements OrderService {
         orderItemDetails.setOrderId(orderItem.getOrderId());
         orderItemDetails.setUpdatedAt(orderItem.getUpdatedAt());
         orderItemDetails.setCreatedAt(orderItem.getCreatedAt());
-        orderItemDetails.setPrice(orderItem.getPrice());
+        orderItemDetails.setProduct(getProductById(orderItem.getProductId()));
         orderItemDetails.setQuantity(orderItem.getQuantity());
-        orderItemDetails.setProductId(orderItem.getProductId());
         return orderItemDetails;
+    }
+
+    private ProductDetails getProductById(int id) {
+        return convertProductToProductDetails(productRepository.getProductById(id));
+    }
+
+    private ProductDetails convertProductToProductDetails(Product product) {
+        ProductDetails productDetails = new ProductDetails();
+        productDetails.setId(product.getId());
+        productDetails.setName(product.getName());
+        productDetails.setPrice(product.getPrice());
+        productDetails.setDescription(product.description());
+        return productDetails;
     }
 }

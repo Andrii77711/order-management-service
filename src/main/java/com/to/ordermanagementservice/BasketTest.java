@@ -59,7 +59,7 @@ public class BasketTest {
                 48,
                 "yellow");
         basket.addProduct(clothing2);
-        Book book1 =new Book(9,
+        Book book1 = new Book(9,
                 "Divine comedy",
                 new BigDecimal("1.80"),
                 "Dante Alegrei",
@@ -67,7 +67,7 @@ public class BasketTest {
                 238,
                 Genre.MYSTERY);
         basket.addProduct(book1);
-        Book book2 =new Book(10,
+        Book book2 = new Book(10,
                 "Kobzar",
                 new BigDecimal("2.80"),
                 "Tarass Shevchenko",
