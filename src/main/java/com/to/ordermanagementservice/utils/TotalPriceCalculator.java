@@ -11,6 +11,9 @@ public final class TotalPriceCalculator {
 
     public static BigDecimal getTotalPriceForOrder(List<OrderItemDetails> orderItems) {
         BigDecimal result = BigDecimal.ZERO;
+        if (orderItems == null) {
+            return result;
+        }
         for (OrderItemDetails orderItem : orderItems) {
             BigDecimal totalPrice = orderItem.getProduct().getPrice()
                     .multiply(BigDecimal.valueOf(orderItem.getQuantity()));

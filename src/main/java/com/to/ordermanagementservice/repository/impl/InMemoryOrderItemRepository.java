@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.time.OffsetDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class InMemoryOrderItemRepository implements OrderItemRepository {
@@ -49,6 +48,6 @@ public class InMemoryOrderItemRepository implements OrderItemRepository {
     public List<OrderItem> getOrderItemsByOrderId(Integer orderId) {
         return orderItems.stream()
                 .filter(orderItem -> orderItem.getOrderId().equals(orderId))
-                .collect(Collectors.toList());
+                .toList();
     }
 }
