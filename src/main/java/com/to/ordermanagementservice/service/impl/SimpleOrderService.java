@@ -49,8 +49,8 @@ public class SimpleOrderService implements OrderService {
         List<OrderDetails> list = new ArrayList<>(orders.size());
         for (Order order : orders) {
             OrderDetails orderDetails = orderMapper.toOrderDetails(order);
-            orderDetails.setTotalPrice(getTotalPriceForOrder(orderDetails.getOrderItems()));
             orderDetails.setOrderItems(collectOrderItemDetails(order.getId()));
+            orderDetails.setTotalPrice(getTotalPriceForOrder(orderDetails.getOrderItems()));
             list.add(orderDetails);
         }
         return list;
