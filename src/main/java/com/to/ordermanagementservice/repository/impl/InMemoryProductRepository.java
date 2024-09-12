@@ -11,6 +11,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository {
@@ -44,5 +46,11 @@ public class InMemoryProductRepository implements ProductRepository {
                 .filter(product -> product.getId() == id)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("not found product with id = " + id));
+    }
+
+    @Override
+    public Map<Integer, Product> getProductsByIds(List<Integer> productIds){
+        return products.stream().filter(product -> productIds.contains(product.getId()))
+                .collect(Collectors.toMap(Product::getId,product -> product));
     }
 }

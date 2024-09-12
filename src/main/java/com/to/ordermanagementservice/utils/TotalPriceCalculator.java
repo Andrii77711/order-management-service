@@ -11,7 +11,7 @@ public final class TotalPriceCalculator {
 
     public static BigDecimal getTotalPriceForOrder(List<OrderItemDetails> orderItems) {
         BigDecimal result = BigDecimal.ZERO;
-        if (orderItems == null) {
+        if (orderItems == null || orderItems.isEmpty()) {
             return result;
         }
         for (OrderItemDetails orderItem : orderItems) {

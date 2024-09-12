@@ -4,6 +4,8 @@ import com.to.ordermanagementservice.dto.OrderDetails;
 import com.to.ordermanagementservice.dto.OrderItemDetails;
 import com.to.ordermanagementservice.dto.ProductDetails;
 import com.to.ordermanagementservice.entity.Order;
+import com.to.ordermanagementservice.entity.OrderItem;
+import com.to.ordermanagementservice.entity.Product;
 import com.to.ordermanagementservice.mapper.OrderItemMapper;
 import com.to.ordermanagementservice.mapper.OrderMapper;
 import com.to.ordermanagementservice.mapper.ProductMapper;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static com.to.ordermanagementservice.utils.TotalPriceCalculator.getTotalPriceForOrder;
 
@@ -48,23 +51,25 @@ public class SimpleOrderService implements OrderService {
 
         List<OrderDetails> list = new ArrayList<>(orders.size());
         for (Order order : orders) {
-            OrderDetails orderDetails = orderMapper.toOrderDetails(order);
-            orderDetails.setOrderItems(collectOrderItemDetails(order.getId()));
-            orderDetails.setTotalPrice(getTotalPriceForOrder(orderDetails.getOrderItems()));
-            list.add(orderDetails);
+            list.add(collectOrderDetails(order));
         }
         return list;
     }
 
-    private List<OrderItemDetails> collectOrderItemDetails(Integer orderId) {
-        return orderItemRepository.getOrderItemsByOrderId(orderId).stream()
-                .map(orderItem -> orderItemMapper.toOrderItemDetails(orderItem,
-                        getProductById(orderItem.getProductId())))
-                .toList();
+    private OrderDetails collectOrderDetails(Order order){
+        OrderDetails orderDetails = orderMapper.toOrderDetails(order);
+        orderDetails.setOrderItems(collectOrderItemDetails(order.getId()));
+        orderDetails.setTotalPrice(getTotalPriceForOrder(orderDetails.getOrderItems()));
+        return orderDetails;
     }
 
-    private ProductDetails getProductById(int id) {
-        return productMapper.toProductDetails(productRepository.getProductById(id));
+    private List<OrderItemDetails> collectOrderItemDetails(Integer orderId) {
+        List<OrderItem> orderItemsByOrderId = orderItemRepository.getOrderItemsByOrderId(orderId);
+        List<Integer> productIds = orderItemsByOrderId.stream().map(OrderItem::getProductId).toList();
+        Map<Integer, Product> productsByIds = productRepository.getProductsByIds(productIds);
+        return orderItemsByOrderId.stream().map(orderItem -> orderItemMapper
+                .toOrderItemDetails(orderItem,productMapper.toProductDetails(productsByIds
+                        .get(orderItem.getProductId())))).toList();
     }
 
 }
