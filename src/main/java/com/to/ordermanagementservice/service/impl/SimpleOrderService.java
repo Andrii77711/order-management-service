@@ -56,7 +56,7 @@ public class SimpleOrderService implements OrderService {
         return list;
     }
 
-    private OrderDetails collectOrderDetails(Order order){
+    private OrderDetails collectOrderDetails(Order order) {
         OrderDetails orderDetails = orderMapper.toOrderDetails(order);
         orderDetails.setOrderItems(collectOrderItemDetails(order.getId()));
         orderDetails.setTotalPrice(getTotalPriceForOrder(orderDetails.getOrderItems()));
@@ -67,9 +67,10 @@ public class SimpleOrderService implements OrderService {
         List<OrderItem> orderItemsByOrderId = orderItemRepository.getOrderItemsByOrderId(orderId);
         List<Integer> productIds = orderItemsByOrderId.stream().map(OrderItem::getProductId).toList();
         Map<Integer, Product> productsByIds = productRepository.getProductsByIds(productIds);
-        return orderItemsByOrderId.stream().map(orderItem -> orderItemMapper
-                .toOrderItemDetails(orderItem,productMapper.toProductDetails(productsByIds
-                        .get(orderItem.getProductId())))).toList();
+        return orderItemsByOrderId.stream().map(orderItem -> {
+            ProductDetails pd = productMapper.toProductDetails(productsByIds.get(orderItem.getProductId()));
+            return orderItemMapper.toOrderItemDetails(orderItem, pd);
+        }).toList();
     }
 
 }

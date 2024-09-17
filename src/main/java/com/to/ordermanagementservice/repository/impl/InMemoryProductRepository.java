@@ -41,16 +41,8 @@ public class InMemoryProductRepository implements ProductRepository {
     }
 
     @Override
-    public Product getProductById(int id) {
-        return products.stream()
-                .filter(product -> product.getId() == id)
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("not found product with id = " + id));
-    }
-
-    @Override
-    public Map<Integer, Product> getProductsByIds(List<Integer> productIds){
+    public Map<Integer, Product> getProductsByIds(List<Integer> productIds) {
         return products.stream().filter(product -> productIds.contains(product.getId()))
-                .collect(Collectors.toMap(Product::getId,product -> product));
+                .collect(Collectors.toMap(Product::getId, product -> product));
     }
 }
