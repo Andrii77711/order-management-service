@@ -14,7 +14,11 @@
     <artifactId>order-management-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>order-management-service</name>
-    <packaging>jar</packaging>
+    <modules>
+        <module>commons-entity</module>
+        <module>order-management-service-app</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <description>Demo project for Spring Boot</description>
 
@@ -46,10 +50,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
 
