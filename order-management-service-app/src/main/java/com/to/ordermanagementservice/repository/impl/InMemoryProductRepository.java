@@ -42,8 +42,7 @@ public class InMemoryProductRepository implements ProductRepository {
 
     @Override
     public Map<Integer, Product> getProductsByIds(List<Integer> productIds) {
-        return products.stream()
-                .filter(product -> productIds.contains(product.getId()))
+        return products.stream().filter(product -> productIds.contains(product.getId()))
                 .collect(Collectors.toMap(Product::getId, product -> product));
     }
 }
