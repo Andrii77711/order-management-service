@@ -1,23 +1,19 @@
 package com.to.validation;
 
-import com.to.exception.ColorValidationException;
+import com.to.exception.ClothingValidationException;
 import com.to.exception.NameValidationException;
-import com.to.exception.SizeValidationException;
 import com.to.ordermanagementservice.entity.Clothing;
 
-public class ClothingValidation implements Validation <Clothing>{
+public class ClothingValidation extends ProductValidation <Clothing>{
     @Override
-    public Boolean isValid (Clothing clothing) throws SizeValidationException {
-        if (clothing.getName().length() > 255 || clothing.getName().isEmpty()){
-            throw new NameValidationException(clothing.getName());
-        }
+    public void doValidateInternal (Clothing clothing) throws ClothingValidationException {
         if (clothing.getSize() < 1) {
-            throw new SizeValidationException(clothing.getSize());
+            throw new ClothingValidationException("the size " + clothing.getSize() +
+                    " must be positive");
         }
         if (clothing.getColor().length() > 255 || clothing.getColor().isEmpty()){
-            throw new ColorValidationException(clothing.getColor());
+            throw new ClothingValidationException("Length of color " + clothing.getColor() +
+                    " must not be empty and longer that 255 characters");
         }
-
-        return true;
     }
 }

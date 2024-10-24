@@ -1,28 +1,24 @@
 package com.to.validation;
 
-import com.to.exception.AuthorValidationException;
+import com.to.exception.BookValidationException;
 import com.to.exception.NameValidationException;
-import com.to.exception.PageValidationException;
-import com.to.exception.YearValidationException;
 import com.to.ordermanagementservice.entity.Book;
 
 import java.time.Year;
 
-public class BookValidation implements Validation <Book>{
+public class BookValidation extends ProductValidation<Book>{
     @Override
-    public Boolean isValid (Book book){
-        if (book.getName().length() > 255 || book.getName().isEmpty()) {
-            throw new NameValidationException(book.getName());
-        }
+    public void doValidateInternal (Book book){
         if (book.getAuthor().length() > 255 || book.getAuthor().isEmpty()){
-            throw new AuthorValidationException(book.getAuthor());
+            throw new BookValidationException("Length of Author name " + book.getAuthor() +
+                    " must not be empty and longer that 255 characters");
         }
         if (book.getPages() < 1 ){
-            throw new PageValidationException(book.getPages());
+            throw new BookValidationException("the count of page " + book.getPages() +
+                    " must be positive number");
         }
         if (book.getYear() > Year.now().getValue()){
-            throw new YearValidationException(book.getYear());
+            throw new BookValidationException("the year " + book.getYear() + " must be real");
         }
-        return true;
     }
 }

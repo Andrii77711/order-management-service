@@ -1,5 +1,6 @@
 package com.to.validation;
 
+import com.to.ordermanagementservice.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,16 +10,16 @@ import java.util.Map;
 
 @Component
 public class ValidationFactory {
-    private final Map<Class<?>,Validation<?>> validationMap = new HashMap<>();
+    private final Map<Class<?>,ProductValidation<?>> validationMap = new HashMap<>();
 
     @Autowired
-    public ValidationFactory (List<Validation<?>> validations){
-        for (Validation<?>validation: validations){
+    public ValidationFactory (List<ProductValidation<?>> validations){
+        for (ProductValidation<?>validation: validations){
             this.validationMap.put(validation.getClass(),validation);
         }
     }
 
-    public <T> Validation<T> getValidation(Class<T> clazz){
-        return (Validation<T>) validationMap.get(clazz);
+    public <T extends Product> ProductValidation<T> getValidation(Class<T> clazz){
+        return (ProductValidation<T>) validationMap.get(clazz);
     }
 }

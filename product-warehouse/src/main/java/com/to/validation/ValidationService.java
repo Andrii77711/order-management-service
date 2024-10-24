@@ -1,5 +1,6 @@
 package com.to.validation;
 
+import com.to.ordermanagementservice.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ValidationService {
@@ -9,10 +10,10 @@ public class ValidationService {
     public ValidationService(ValidationFactory validationFactory) {
         this.validationFactory = validationFactory;
     }
-    public <T> Boolean isValid (T product){
-        Validation<T> validation = (Validation<T>) validationFactory.getValidation(product.getClass());
+    public <T extends Product> void validation (T product){
+        ProductValidation<T> validation = (ProductValidation<T>) validationFactory.getValidation(product.getClass());
         if (validation != null){
-            return validation.isValid(product);
+            validation.validation(product);
         }else {
             throw new IllegalArgumentException("Validation not found");
         }
