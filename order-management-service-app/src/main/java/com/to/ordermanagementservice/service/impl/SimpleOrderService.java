@@ -15,7 +15,6 @@ import com.to.ordermanagementservice.repository.ProductRepository;
 import com.to.ordermanagementservice.service.OrderService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -47,13 +46,10 @@ public class SimpleOrderService implements OrderService {
 
     @Override
     public List<OrderDetails> getAllOrders() {
-        List<Order> orders = orderRepository.getAllOrders();
-
-        List<OrderDetails> list = new ArrayList<>(orders.size());
-        for (Order order : orders) {
-            list.add(collectOrderDetails(order));
-        }
-        return list;
+        return orderRepository.getAllOrders()
+                .stream()
+                .map(this::collectOrderDetails)
+                .toList();
     }
 
     private OrderDetails collectOrderDetails(Order order) {
