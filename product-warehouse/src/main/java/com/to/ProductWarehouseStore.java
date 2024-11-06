@@ -1,8 +1,11 @@
 package com.to;
 
 import com.to.exception.CapacityValidationException;
-import com.to.ordermanagementservice.entity.*;
-import com.to.validation.ValidationFactory;
+import com.to.ordermanagementservice.entity.Book;
+import com.to.ordermanagementservice.entity.Clothing;
+import com.to.ordermanagementservice.entity.Electronic;
+import com.to.ordermanagementservice.entity.Grocery;
+import com.to.ordermanagementservice.entity.Product;
 import com.to.validation.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,19 +32,21 @@ public class ProductWarehouseStore {
         hasCapacity(product);
         products.add(product);
     }
+
     private void hasCapacity(Product product) throws CapacityValidationException {
         long count = products.stream().filter(p -> p.getClass().equals(product.getClass())).count();
-        if (product instanceof Book && count >= BOOK_MAX_CAPACITY){
+        if (product instanceof Book && count >= BOOK_MAX_CAPACITY) {
             throw new CapacityValidationException("can not add book more that " + BOOK_MAX_CAPACITY);
-        }else if (product instanceof Clothing && count >= CLOTHING_MAX_CAPACITY){
+        } else if (product instanceof Clothing && count >= CLOTHING_MAX_CAPACITY) {
             throw new CapacityValidationException("can not add clothing more that " + CLOTHING_MAX_CAPACITY);
-        }else if (product instanceof Electronic && count >= ELECTRONIC_MAX_CAPACITY){
+        } else if (product instanceof Electronic && count >= ELECTRONIC_MAX_CAPACITY) {
             throw new CapacityValidationException("can not add electronic more that " + ELECTRONIC_MAX_CAPACITY);
-        }else if (product instanceof Grocery && count >= GROCERY_MAX_CAPACITY){
+        } else if (product instanceof Grocery && count >= GROCERY_MAX_CAPACITY) {
             throw new CapacityValidationException("can not add grocery more that " + GROCERY_MAX_CAPACITY);
         }
     }
-    private void isValid (Product product){
+
+    private void isValid(Product product) {
         validationService.validation(product);
     }
 

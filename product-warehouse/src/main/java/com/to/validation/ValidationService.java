@@ -12,11 +12,12 @@ public class ValidationService {
     public ValidationService(ValidationFactory validationFactory) {
         this.validationFactory = validationFactory;
     }
-    public <T extends Product> void validation (T product){
+
+    public <T extends Product> void validation(T product) {
         ProductValidation<T> validation = (ProductValidation<T>) validationFactory.getValidation(product.getClass());
-        if (validation != null){
+        if (validation != null) {
             validation.validation(product);
-        }else {
+        } else {
             throw new IllegalArgumentException("Validation not found");
         }
     }

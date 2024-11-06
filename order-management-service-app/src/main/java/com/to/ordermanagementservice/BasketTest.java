@@ -10,8 +10,6 @@ import com.to.ordermanagementservice.repository.impl.BasketRepositoryImpl;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class BasketTest {
     public static void main(String[] args) {
