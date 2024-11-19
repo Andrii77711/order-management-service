@@ -3,7 +3,6 @@ package com.to.ordermanagementservice.web.controller;
 import com.to.ordermanagementservice.dto.OrderDetails;
 import com.to.ordermanagementservice.service.OrderService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +30,9 @@ public class OrdersApiController {
                 : ResponseEntity.ok(orders);
 
     }
+
     @GetMapping("/orders/{orderID}")
-    public ResponseEntity<OrderDetails> getOrderByID(@PathVariable int orderID){
+    public ResponseEntity<OrderDetails> getOrderByID(@PathVariable int orderID) {
         return orderService.getOrderByID(orderID).map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
