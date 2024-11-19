@@ -1,6 +1,9 @@
 package com.to;
 
 import com.to.ordermanagementservice.entity.Book;
+import com.to.ordermanagementservice.entity.Clothing;
+import com.to.ordermanagementservice.entity.Electronic;
+import com.to.ordermanagementservice.entity.Grocery;
 import com.to.ordermanagementservice.entity.Product;
 import com.to.ordermanagementservice.enums.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +32,17 @@ public class Main implements CommandLineRunner {
     @Override
     public void run(String... args) {
         List<Product> invalidProducts = new ArrayList<>();
+        addBook(invalidProducts);
+        addGrocery(invalidProducts);
+        addClothing(invalidProducts);
+        addElectronic(invalidProducts);
+        System.out.println("Product from store: ");
+        productWarehouseStore.getProducts().forEach(product -> System.out.println(product.description()));
+        System.out.println("invalidProducts: ");
+        invalidProducts.forEach(product -> System.out.println(product.description()));
+    }
+
+    private void addBook(List<Product> invalidProducts) {
         for (int i = 0; i < 6; i++) {
             Product book = new Book(i,
                     "m",
@@ -56,10 +71,53 @@ public class Main implements CommandLineRunner {
             invalidProducts.add(book);
             System.out.println(e.getMessage());
         }
-        System.out.println("Product from store: ");
-        productWarehouseStore.getProducts().forEach(product -> System.out.println(product.description()));
-        System.out.println("invalidProducts: ");
-        invalidProducts.forEach(product -> System.out.println(product.description()));
+    }
+
+    private void addGrocery(List<Product> invalidProducts) {
+        for (int i = 0; i < 6; i++) {
+            Product grocery = new Grocery(i,
+                    "m",
+                    BigDecimal.valueOf(10),
+                    LocalDate.now());
+            try {
+                productWarehouseStore.addProduct(grocery);
+            } catch (Exception e) {
+                invalidProducts.add(grocery);
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void addClothing(List<Product> invalidProducts) {
+        for (int i = 0; i < 6; i++) {
+            Product clothing = new Clothing(i,
+                    "m",
+                    BigDecimal.valueOf(10),
+                    12,
+                    "12");
+            try {
+                productWarehouseStore.addProduct(clothing);
+            } catch (Exception e) {
+                invalidProducts.add(clothing);
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void addElectronic(List<Product> invalidProducts) {
+        for (int i = 0; i < 6; i++) {
+            Product electronic = new Electronic(i,
+                    "m",
+                    BigDecimal.valueOf(10),
+                    "k",
+                    LocalDate.now());
+            try {
+                productWarehouseStore.addProduct(electronic);
+            } catch (Exception e) {
+                invalidProducts.add(electronic);
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
 }
