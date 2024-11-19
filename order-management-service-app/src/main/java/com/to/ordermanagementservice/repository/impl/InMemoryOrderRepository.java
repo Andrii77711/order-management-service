@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class InMemoryOrderRepository implements OrderRepository {
@@ -22,6 +23,11 @@ public class InMemoryOrderRepository implements OrderRepository {
     @Override
     public List<Order> getAllOrders() {
         return List.copyOf(orders);
+    }
+
+    @Override
+    public Optional<Order> getOrderByID(int id) {
+        return orders.stream().filter(order -> order.getId().equals(id)).findAny();
     }
 
     private Order createOrder(int id, int userId) {
