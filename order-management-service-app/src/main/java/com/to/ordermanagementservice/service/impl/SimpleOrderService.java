@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static com.to.ordermanagementservice.utils.TotalPriceCalculator.getTotalPriceForOrder;
 
@@ -50,6 +51,11 @@ public class SimpleOrderService implements OrderService {
                 .stream()
                 .map(this::collectOrderDetails)
                 .toList();
+    }
+
+    @Override
+    public Optional<OrderDetails> getOrderByID(int id) {
+        return orderRepository.getOrderByID(id).map(this::collectOrderDetails);
     }
 
     private OrderDetails collectOrderDetails(Order order) {
