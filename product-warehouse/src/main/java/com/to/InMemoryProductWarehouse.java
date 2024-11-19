@@ -6,33 +6,23 @@ import com.to.ordermanagementservice.entity.Clothing;
 import com.to.ordermanagementservice.entity.Electronic;
 import com.to.ordermanagementservice.entity.Grocery;
 import com.to.ordermanagementservice.entity.Product;
-import com.to.validation.ValidationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class ProductWarehouseStore {
+@Component
+public class InMemoryProductWarehouse implements ProductWarehouse {
     private List<Product> products = new ArrayList<>();
-    private final ValidationService validationService;
     private static final int BOOK_MAX_CAPACITY = 5;
     private static final int CLOTHING_MAX_CAPACITY = 5;
     private static final int ELECTRONIC_MAX_CAPACITY = 5;
     private static final int GROCERY_MAX_CAPACITY = 5;
-
-    @Autowired
-    public ProductWarehouseStore(ValidationService validationService) {
-        this.validationService = validationService;
-    }
-
+    @Override
     public void addProduct(Product product) {
-        isValid(product);
         hasCapacity(product);
         products.add(product);
     }
-
     private void hasCapacity(Product product) throws CapacityValidationException {
         long count = products.stream().filter(p -> p.getClass().equals(product.getClass())).count();
         if (product instanceof Book && count >= BOOK_MAX_CAPACITY) {
@@ -46,10 +36,7 @@ public class ProductWarehouseStore {
         }
     }
 
-    private void isValid(Product product) {
-        validationService.validation(product);
-    }
-
+    @Override
     public List<Product> getProducts() {
         return products;
     }

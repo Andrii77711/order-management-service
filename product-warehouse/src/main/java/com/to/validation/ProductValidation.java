@@ -14,5 +14,6 @@ public abstract class ProductValidation<T extends Product> {
         doValidateInternal(product);
     }
 
+    abstract Class<T> supports();
     abstract void doValidateInternal(T product);
 }

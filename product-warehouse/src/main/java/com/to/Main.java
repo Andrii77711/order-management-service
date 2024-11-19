@@ -14,10 +14,10 @@ import java.util.List;
 
 @SpringBootApplication
 public class Main implements CommandLineRunner {
-    private final ProductWarehouseStore productWarehouseStore;
+    private final ProductWarehouseFacade productWarehouseStore;
 
     @Autowired
-    public Main(ProductWarehouseStore productWarehouseStore) {
+    public Main(ProductWarehouseFacade productWarehouseStore) {
         this.productWarehouseStore = productWarehouseStore;
     }
 
