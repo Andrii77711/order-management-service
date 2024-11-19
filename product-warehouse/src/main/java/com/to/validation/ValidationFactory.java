@@ -14,8 +14,8 @@ public class ValidationFactory {
 
     @Autowired
     public ValidationFactory(List<ProductValidation<?>> validationsList) {
-        this.validationMap = validationsList.stream().collect(Collectors.toMap(ProductValidation::supports
-                ,validation -> validation));
+        this.validationMap = validationsList.stream().collect(Collectors.toMap(ProductValidation::supports,
+                validation -> validation));
     }
 
     public <T extends Product> ProductValidation<T> getValidation(Class<T> clazz) {
