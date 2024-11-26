@@ -1,5 +1,7 @@
 package com.to;
 
+import com.to.exception.CapacityValidationException;
+import com.to.exception.ProductValidationException;
 import com.to.ordermanagementservice.entity.Book;
 import com.to.ordermanagementservice.entity.Clothing;
 import com.to.ordermanagementservice.entity.Electronic;
@@ -53,8 +55,10 @@ public class Main implements CommandLineRunner {
                     Genre.BIOGRAPHY);
             try {
                 productWarehouseStore.addProduct(book);
-            } catch (Exception e) {
+            } catch (ProductValidationException e) {
                 invalidProducts.add(book);
+                System.out.println(e.getMessage());
+            } catch (CapacityValidationException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -67,8 +71,10 @@ public class Main implements CommandLineRunner {
                 Genre.ROMANCE);
         try {
             productWarehouseStore.addProduct(book);
-        } catch (Exception e) {
+        } catch (ProductValidationException e) {
             invalidProducts.add(book);
+            System.out.println(e.getMessage());
+        } catch (CapacityValidationException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -81,8 +87,10 @@ public class Main implements CommandLineRunner {
                     LocalDate.now());
             try {
                 productWarehouseStore.addProduct(grocery);
-            } catch (Exception e) {
+            } catch (ProductValidationException e) {
                 invalidProducts.add(grocery);
+                System.out.println(e.getMessage());
+            } catch (CapacityValidationException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -97,8 +105,10 @@ public class Main implements CommandLineRunner {
                     "12");
             try {
                 productWarehouseStore.addProduct(clothing);
-            } catch (Exception e) {
+            } catch (ProductValidationException e) {
                 invalidProducts.add(clothing);
+                System.out.println(e.getMessage());
+            } catch (CapacityValidationException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -113,8 +123,10 @@ public class Main implements CommandLineRunner {
                     LocalDate.now());
             try {
                 productWarehouseStore.addProduct(electronic);
-            } catch (Exception e) {
+            } catch (ProductValidationException e) {
                 invalidProducts.add(electronic);
+                System.out.println(e.getMessage());
+            } catch (CapacityValidationException e) {
                 System.out.println(e.getMessage());
             }
         }
