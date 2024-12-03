@@ -3,8 +3,8 @@ package com.to.validation;
 import com.to.exception.ProductValidationException;
 import com.to.ordermanagementservice.entity.Product;
 
-public abstract class ProductValidation<T extends Product> {
-    public void validation(T product) {
+public abstract class ProductValidate<T extends Product> {
+    public void validate(T product) {
         if (product.getName() == null) {
             throw new ProductValidationException("Product name is required");
         }

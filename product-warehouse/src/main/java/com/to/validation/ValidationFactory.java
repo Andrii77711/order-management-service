@@ -10,15 +10,15 @@ import java.util.stream.Collectors;
 
 @Component
 public class ValidationFactory {
-    private final Map<Class<?>, ProductValidation<?>> validationMap;
+    private final Map<Class<?>, ProductValidate<?>> validationMap;
 
     @Autowired
-    public ValidationFactory(List<ProductValidation<?>> validationsList) {
-        this.validationMap = validationsList.stream().collect(Collectors.toMap(ProductValidation::supports,
+    public ValidationFactory(List<ProductValidate<?>> validationsList) {
+        this.validationMap = validationsList.stream().collect(Collectors.toMap(ProductValidate::supports,
                 validation -> validation));
     }
 
-    public <T extends Product> ProductValidation<T> getValidation(Class<T> clazz) {
-        return (ProductValidation<T>) validationMap.get(clazz);
+    public <T extends Product> ProductValidate<T> getValidation(Class<T> clazz) {
+        return (ProductValidate<T>) validationMap.get(clazz);
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
 @Component
-public class GroceryValidation extends ProductValidation<Grocery> {
+public class GroceryValidate extends ProductValidate<Grocery> {
     @Override
     public Class<Grocery> supports() {
         return Grocery.class;

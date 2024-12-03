@@ -9,7 +9,7 @@ import java.time.Year;
 import static com.to.utils.Constant.MAX_TEXT_SIZE;
 
 @Component
-public class ElectronicValidation extends ProductValidation<Electronic> {
+public class ElectronicValidate extends ProductValidate<Electronic> {
     @Override
     public Class<Electronic> supports() {
         return Electronic.class;

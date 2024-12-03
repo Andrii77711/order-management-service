@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import static com.to.utils.Constant.MAX_TEXT_SIZE;
 
 @Component
-public class ClothingValidation extends ProductValidation<Clothing> {
+public class ClothingValidate extends ProductValidate<Clothing> {
     @Override
     public Class<Clothing> supports() {
         return Clothing.class;

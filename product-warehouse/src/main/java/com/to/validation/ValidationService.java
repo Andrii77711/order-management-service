@@ -14,9 +14,9 @@ public class ValidationService {
     }
 
     public <T extends Product> void validation(T product) {
-        ProductValidation<T> validation = (ProductValidation<T>) validationFactory.getValidation(product.getClass());
+        ProductValidate<T> validation = (ProductValidate<T>) validationFactory.getValidation(product.getClass());
         if (validation != null) {
-            validation.validation(product);
+            validation.validate(product);
         } else {
             throw new IllegalArgumentException("Validation not found");
         }

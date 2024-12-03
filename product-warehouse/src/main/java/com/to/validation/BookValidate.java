@@ -9,7 +9,7 @@ import java.time.Year;
 import static com.to.utils.Constant.MAX_TEXT_SIZE;
 
 @Component
-public class BookValidation extends ProductValidation<Book> {
+public class BookValidate extends ProductValidate<Book> {
     @Override
     public Class<Book> supports() {
         return Book.class;
