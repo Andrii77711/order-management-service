@@ -12,4 +12,5 @@
     <suppress checks="MagicNumber" files="InMemoryOrderRepository.java"/>
     <suppress checks="MagicNumber" files="BasketTest.java"/>
     <suppress checks="MagicNumber" files="InMemoryProductRepository.java"/>
+    <suppress checks="MagicNumber" files="Main.java"/>
 </suppressions>
