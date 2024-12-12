@@ -17,6 +17,7 @@
     <modules>
         <module>commons-entity</module>
         <module>order-management-service-app</module>
+        <module>product-warehouse</module>
     </modules>
     <packaging>pom</packaging>
 
